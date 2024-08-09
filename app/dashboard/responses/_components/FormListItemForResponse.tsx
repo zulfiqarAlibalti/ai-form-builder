@@ -6,7 +6,24 @@ import { Loader2 } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 
-function FormListItemResponses({ jsonForm, formRecord }) {
+// Define the types for jsonForm and formRecord
+interface JsonForm {
+    formTitle: string;
+    formHeading: string;
+    // Add other properties if necessary
+}
+
+interface FormRecord {
+    id: number;
+    // Add other properties if necessary
+}
+
+interface FormListItemResponsesProps {
+    jsonForm: JsonForm;
+    formRecord: FormRecord;
+}
+
+function FormListItemResponses({ jsonForm, formRecord }: FormListItemResponsesProps) {
     const [loading, setLoading] = useState(false);
     const [responseCount, setResponseCount] = useState(0);
 
@@ -25,7 +42,7 @@ function FormListItemResponses({ jsonForm, formRecord }) {
     };
 
     const ExportData = async () => {
-        let jsonData = [];
+        let jsonData: any[] = []; // You might want to define a more specific type here
         setLoading(true);
 
         try {
@@ -49,10 +66,7 @@ function FormListItemResponses({ jsonForm, formRecord }) {
         }
     };
 
-    /**
-     * Convert Json to Excel and then Download it
-     */
-    const exportToExcel = (jsonData) => {
+    const exportToExcel = (jsonData: any[]) => { // You might want to define a more specific type here
         const worksheet = XLSX.utils.json_to_sheet(jsonData);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
