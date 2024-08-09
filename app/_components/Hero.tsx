@@ -85,7 +85,7 @@ function Hero() {
         <h2 className="mt-4 text-xl font-bold text-black">Edit Your form </h2>
 
         <p className="mt-1 text-sm text-gray-600">
-          Easily edit your form to include additional questions, change the order of questions, or adjust the form's appearance.
+          Easily edit your form to include additional questions, change the order of questions, or adjust the form &apos;s appearance.
         </p>
       </a>
 
