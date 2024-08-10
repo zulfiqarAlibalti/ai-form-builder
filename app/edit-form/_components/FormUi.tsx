@@ -144,11 +144,22 @@ function FormUi({
                 <SelectTrigger className="w-full bg-transparent">
                   <SelectValue placeholder={field.placeholder} />
                 </SelectTrigger>
-                <SelectContent>
-                  {field.options.map((item, index) => (
-                    <SelectItem key={index} value={item.label?item.label:item}>{item.label?item.label:item}</SelectItem>
+
+                {/* <SelectContent>
+                  {field.options?.map((item, index) => (
+                    <SelectItem key={index} value={item.label}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent> */}
+                  <SelectContent>
+                  {field.options?.map((item, index) => (
+                    <SelectItem key={index} value={item?.label ?? item}>
+                      {item?.label ?? item}
+                    </SelectItem>
                   ))}
                 </SelectContent>
+
               </Select>
             </div>
           ) : field.fieldType === 'radio' ? (
