@@ -145,10 +145,8 @@ function FormUi({
                   <SelectValue placeholder={field.placeholder} />
                 </SelectTrigger>
                 <SelectContent>
-                  {field.options?.map((item, index) => (
-                    <SelectItem key={index} value={item.label}>
-                      {item.label}
-                    </SelectItem>
+                  {field.options.map((item, index) => (
+                    <SelectItem key={index} value={item.label?item.label:item}>{item.label?item.label:item}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
