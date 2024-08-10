@@ -19,16 +19,4 @@ export const userResponses=pgTable('userResponses',{
     formRef:integer('formRef').references(()=>JsonForms.id)
 })
 
-interface JsonForm {
-    formTitle: string;
-    formHeading: string;
-    fields: Array<{
-      fieldName: string;
-      fieldType: string;
-      label: string;
-      placeholder: string;
-      options?: Array<{ label: string }>;
-      required?: boolean;
-    }>;
-  }
   

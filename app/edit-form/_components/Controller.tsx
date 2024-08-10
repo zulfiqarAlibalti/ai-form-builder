@@ -67,7 +67,7 @@ function Controller({ selectedTheme, selectedBackground, selectedStyle, setSignI
             onClick={() => selectedBackground(bg.gradient)}
             className='w-full h-[70px] rounded-lg cursor-pointer
             hover:border-black hover:border-2 flex items-center justify-center'
-            style={{ background: bg.gradient }}
+            style={{ background:bg.gradient }}
           >
             {index === 0 && 'None'}
           </div>
