@@ -17,9 +17,9 @@ interface LiveAiFormProps {
   params: Params;
 }
 
-// Define the JsonForm type according to your form structure
+// Update the FormField type to include 'file'
 interface FormField {
-  fieldType: 'select' | 'radio' | 'checkbox' | 'text';
+  fieldType: 'select' | 'radio' | 'checkbox' | 'text' | 'file';
   fieldName: string;
   label: string;
   placeholder?: string;
