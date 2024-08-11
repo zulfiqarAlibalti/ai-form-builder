@@ -19,9 +19,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-// Define the FormField type if not already defined elsewhere
+// Update the FormField type to include 'file'
 interface FormField {
-  fieldType: 'select' | 'radio' | 'checkbox' | 'text';
+  fieldType: 'select' | 'radio' | 'checkbox' | 'text' | 'file';
   fieldName: string;
   label: string;
   placeholder?: string;
@@ -30,7 +30,6 @@ interface FormField {
   type?: string;
 }
 
-// Define types for the props
 interface FieldEditProps {
   defaultValue: FormField;
   onUpdate: (updatedField: FormField) => void;
@@ -55,14 +54,19 @@ function FieldEdit({ defaultValue, onUpdate, deleteField }: FieldEditProps) {
               onChange={(e) => setLabel(e.target.value)}
             />
           </div>
-          <div>
-            <label className='text-xs'>Placeholder Name</label>
-            <Input
-              type="text"
-              value={placeholder ?? ''} // Use value instead of defaultValue
-              onChange={(e) => setPlaceholder(e.target.value)}
-            />
-          </div>
+
+          {/* Conditionally render placeholder input if not a file type */}
+          {defaultValue.fieldType !== 'file' && (
+            <div>
+              <label className='text-xs'>Placeholder Name</label>
+              <Input
+                type="text"
+                value={placeholder ?? ''} // Use value instead of defaultValue
+                onChange={(e) => setPlaceholder(e.target.value)}
+              />
+            </div>
+          )}
+          
           <Button
             size="sm"
             className="mt-3"

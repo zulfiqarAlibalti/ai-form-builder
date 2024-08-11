@@ -20,7 +20,7 @@ import { SignInButton, useUser } from '@clerk/nextjs';
 
 // Define types for jsonForm and props
 interface FormField {
-  fieldType: 'select' | 'radio' | 'checkbox' | 'text';
+  fieldType: 'select' | 'radio' | 'checkbox' | 'text' | 'file'; // Added 'file'
   fieldName: string;
   label: string;
   placeholder?: string;
@@ -65,6 +65,14 @@ function FormUi({
     setFormData({
       ...formData,
       [name]: value
+    });
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = event.target;
+    setFormData({
+      ...formData,
+      [name]: files?.[0] // Assuming single file upload
     });
   };
 
@@ -145,13 +153,6 @@ function FormUi({
                   <SelectValue placeholder={field.placeholder} />
                 </SelectTrigger>
 
-                {/* <SelectContent>
-                  {field.options?.map((item, index) => (
-                    <SelectItem key={index} value={item.label}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent> */}
                   <SelectContent>
                   {field.options?.map((item, index) => (
                     <SelectItem key={index} value={item?.label ?? item}>
@@ -191,6 +192,12 @@ function FormUi({
                   <h2>{field.label}</h2>
                 </div>
               )}
+            </div>
+          ) : field.fieldType === 'file' ? (
+            <div className='my-3 w-full'>
+              <Label className='text-xs text-gray-500' htmlFor={field.fieldName}>{field.label}</Label>
+              <Input id={field.fieldName} type="file" name={field.fieldName}
+                required={field?.required} onChange={handleFileChange} />
             </div>
           ) : (
             <div className='my-3 w-full'>
