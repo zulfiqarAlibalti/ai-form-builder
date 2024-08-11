@@ -183,7 +183,7 @@ function EditForm({ params }: EditFormParams) {
           />
         </div>
         <div className='md:col-span-2 border rounded-lg p-5 flex items-center justify-center'
-          style={{ backgroundImage: `url(${selectedBackground})` }}>
+          style={{ backgroundImage: selectedBackground }}>
           {jsonForm && record && (
             <FormUi
               jsonForm={jsonForm}

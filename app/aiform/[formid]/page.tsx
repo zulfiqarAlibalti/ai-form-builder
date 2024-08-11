@@ -75,7 +75,7 @@ function LiveAiForm({ params }: LiveAiFormProps) {
     <div
       className="p-10 flex justify-center items-center"
       style={{
-        backgroundImage: record?.background ? `url(${record.background})` : undefined,
+        backgroundImage: record?.background
       }}
     >
       {record && jsonForm && (
