@@ -21,9 +21,9 @@ interface EditFormParams {
   };
 }
 
-// Define types for jsonForm and record
+// Update the FormField type to include 'file'
 interface FormField {
-  fieldType: 'select' | 'radio' | 'checkbox' | 'text';
+  fieldType: 'select' | 'radio' | 'checkbox' | 'text' | 'file';
   fieldName: string;
   label: string;
   placeholder?: string;
@@ -44,7 +44,7 @@ interface Record {
   background: string;
   theme: string;
   style: string;
-  enabledSignIn: boolean; // Add this field if it's part of the schema
+  enabledSignIn: boolean;
 }
 
 function EditForm({ params }: EditFormParams) {
@@ -74,7 +74,7 @@ function EditForm({ params }: EditFormParams) {
       ));
 
     if (result.length > 0) {
-      const fetchedRecord = result[0] as Record; // Type assertion here
+      const fetchedRecord = result[0] as Record;
       setRecord(fetchedRecord);
       try {
         const parsedJsonForm = JSON.parse(fetchedRecord.jsonform) as JsonForm;
