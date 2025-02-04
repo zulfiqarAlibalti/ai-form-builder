@@ -1,14 +1,16 @@
-export default[
+const pricingPlans = [
     {
-        link:'https://buy.stripe.com/test_bIY8zKdX31IF92gaEF',
-        price:7.99,
-        priceId:'price_1Qog8ZLsIYb2nKx8EtM0dX5g',
-        duration:'Monthly'
+        link: process.env.REACT_APP_MONTHLY_PLAN_LINK,
+        price: 7.99,
+        priceId: process.env.REACT_APP_MONTHLY_PLAN_PRICE_ID,
+        duration: 'Monthly'
     },
     {
-        link:'https://buy.stripe.com/test_fZe17if17drn7Yc28a',
-        price:50.00,
-        priceId:'price_1QogAmLsIYb2nKx8mCPecOgT',
-        duration:'Yearly'
+        link: process.env.REACT_APP_YEARLY_PLAN_LINK,
+        price: 50.00,
+        priceId: process.env.REACT_APP_YEARLY_PLAN_PRICE_ID,
+        duration: 'Yearly'
     }
-]
+];
+
+export default pricingPlans;
